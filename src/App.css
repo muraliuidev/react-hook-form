@@ -30,3 +30,6 @@ button {
   border-radius: 4px;
   display: block;
 }
+.error__msg{
+  color: red;
+}
