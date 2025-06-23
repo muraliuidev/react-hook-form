@@ -22,8 +22,11 @@ input[type="text"], input[type="email"]{
   margin-bottom: 20px;
 }
 button {
-  width: 424px;
+  width: 426px;
   background-color: black;
   color: white;
   border: 1px solid black;
+  padding: 8.7px 12px;;
+  border-radius: 4px;
+  display: block;
 }
