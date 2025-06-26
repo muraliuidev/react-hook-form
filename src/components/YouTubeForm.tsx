@@ -6,11 +6,27 @@ let renderCount = 0;
 type FormValues = {
     username: string,
     email: string,
-    channel: string
+    channel: string,
+    social: {
+        twitter: string,
+        facebook: string
+    },
+    phoneNumbers: string[];
 }
 
 function YouTubeForm() {
-const form = useForm<FormValues>()
+const form = useForm<FormValues>({
+    defaultValues: {
+        username: "Batman",
+        email: "batman@gmail.com",
+        channel: "Batman-Series",
+        social: {
+            twitter: "",
+            facebook: ""
+        },
+        phoneNumbers: ["", ""]
+    }
+})
 const { register, control, handleSubmit, formState } = form;
 const { errors } = formState;
 
@@ -62,6 +78,26 @@ const onSubmit = (data: FormValues) => {
                         }
                     })} />
                     <p className="error__msg">{errors.channel?.message}</p>
+                </div>
+                
+                <div className="form__control">
+                    <label htmlFor="twitter">Twitter</label>
+                    <input type="text" id="twitter" {...register("social.twitter")} />
+                </div>
+
+                 <div className="form__control">
+                    <label htmlFor="facebook">Facebook</label>
+                    <input type="text" id="facebook" {...register("social.facebook")} />
+                </div>
+
+                <div className="form__control">
+                    <label htmlFor="primary-phone">Primary PhoneNumber</label>
+                    <input type="text" id="primary-phone" {...register("phoneNumbers.0")} />
+                </div>
+
+                <div className="form__control">
+                    <label htmlFor="secondary-phone">Secondary PhoneNumber</label>
+                    <input type="text" id="secondary-phone" {...register("phoneNumbers.1")} />
                 </div>
 
                 <button>Submit</button>
